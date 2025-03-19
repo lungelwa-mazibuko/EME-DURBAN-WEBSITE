@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Documents Here</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+       html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    line-height: 1.2;
+}
+.alert {
+    display: none;
+    background-color: #e20728;
+    border: 1px solid #d71515;
+    color: #f9f7f7;
+    padding: 15px;
+    border-radius: 4px;
+    margin: 10px 0;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: white;
+}
+.pricelist-image{
+    margin-left: 400PX;
+    margin-right: 400PX;
+ }
+/* the  Navigation */
+nav {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    justify-content: center;
+    flex-wrap: wrap;
+    background: linear-gradient(to right, #1a1a1a, #416df2);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    transition: background 0.3s ease; 
+    
+}
+
+nav:hover {
+    background: rgba(12,3,51,0.95);
+}
+
+nav .logo {
+    width: 80px;
+    position: absolute;
+    left: 5%;
+    top: 20px;
+    transition: transform 0.3s ease;
+}
+
+nav .logo:hover {
+    transform: scale(1.05);
+}
+
+nav ul {
+    display: flex;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+nav ul li {
+    margin-left: 20px;
+ }
+ 
+nav ul li a {
+    text-decoration: none;
+    color: #fdfafa;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+nav ul li a:hover {
+    color: rgb(216, 178, 61);
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: linear-gradient(to right, #e8a914,#aaa9a7, #352202);
+    min-width: 300px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0;
+    top: 100%;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.dropdown:hover .dropdown-content,
+.dropdown-content:hover {
+    display: block;
+}
+
+.contact-card {
+    text-align: center;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+}
+
+.contact-card h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.contact-details p {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-details i {
+    margin-right: 10px;
+    color: #0066cc;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.contact-btn {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #0066cc;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.contact-btn:hover {
+    background-color: #004080;
+} 
+
+.v-shape-footer {
+    background: linear-gradient(to right, #1a1a1a, #416df2);
+    color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    position: relative;
+    padding: 120px 0 40px;
+    margin-top: 100px;
+    clip-path: polygon(0 15%, 50% 0, 100% 15%, 100% 100%, 0 100%);
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1400px;
+    margin: auto;
+    padding: 20px;
+    position: relative;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 250px;
+    margin: 15px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer-col:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.footer-col h4 {
+    font-size: 1.4em;
+    color: #fff;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-col h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(to right, #ffdd57, #416df2);
+    border-radius: 2px;
+}
+
+.footer-col ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin: 12px 0;
+    transition: transform 0.3s ease;
+}
+
+.footer-col ul li:hover {
+    transform: translateX(8px);
+}
+
+.footer-col ul li a {
+    color: #f4f4f4;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-col ul li a::before {
+    content: '→';
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+    color: #ffdd57;
+}
+
+.footer-col ul li a:hover::before {
+    opacity: 1;
+}
+
+.footer-col p {
+    margin-top: 15px;
+    font-size: 0.95em;
+    color: #ddd;
+    line-height: 1.6;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    color: #f4f4f4;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.social-links a::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #416df2, #ffdd57);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.social-links a:hover {
+    transform: translateY(-3px);
+    color: #fff;
+}
+
+.social-links a:hover::before {
+    opacity: 1;
+}
+
+/* Bottom bar */
+.footer-bottom {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    margin-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .v-shape-footer {
+        clip-path: polygon(0 5%, 50% 0, 100% 5%, 100% 100%, 0 100%);
+        padding: 80px 0 40px;
+    }
+
+    .footer-col {
+        min-width: 100%;
+        margin: 10px 0;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}
+
+/* Optional: Add a gradient overlay */
+.footer-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(65, 109, 242, 0.1), rgba(26, 26, 26, 0.1));
+    pointer-events: none;
+}
+    </style>
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+    <!-- Navigation -->
+    <div class="hero1">
+        <nav class="bg-white shadow-md py-4">
+            <div class>
+                <img src="images/LOGO.jpg" alt="Logo" class="h-16 logo">
+                <ul class>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="index.html#about">ABOUT US</a></li>
+                    <li><a href="index.html#services" >OUR SERVICES</a></li>
+                    <li class="relative">
+                        <a href="#" onclick="toggleContactDropdown(event)">CONTACT US</a>
+                        <div id="contactDropdown" class="hidden absolute bg-white border rounded shadow-md p-4">
+                            <h3 class="text-lg font-bold mb-2">Contact Information</h3>
+                            <p><i class="fas fa-envelope"></i> Email: Educationmadeeasy.eh@gmail.com</p>
+                            <p><i class="fas fa-phone"></i> Phone: +27 68 416 7336</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Address: 21 FIELD / JOE SLOVO ST, ZUMAYSHA HOUSE 10TH FLOOR</p>
+                            <div class="mt-2 space-y-2">
+                                <a href="mailto:Educationmadeeasy.eh@gmail.com" class="block text-blue-600 hover:underline">Send Email</a>
+                                <a href="tel:+27684167336" class="block text-blue-600 hover:underline">Call Now</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="#" onclick="showUnavailable(event)">LOGIN</a></li>
+                    <li><a href="#" onclick="showUnavailable(event)">PAYMENTS & FEES</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Alert Messages -->
+        <div id="unavailableMessage" class="hidden alert bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mt-4">
+            This service is currently unavailable.
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+    <!-- Multi-step Form Container -->
+    <div class="max-w-4xl mx-auto p-8">
+        <!-- Step 2: Document Upload -->
+        <div id="documentUploadForm">
+            <h2 class="text-2xl font-bold text-center mb-8 text-blue-800">Required Documents Upload</h2>
+            <form id="uploadForm" onsubmit="return validateForm(event)">
+                <div class="space-y-6">
+                    <div class="border-b pb-6">
+                        <h3 class="text-lg font-medium mb-4">Please upload the following documents:</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Certified Copy of ID *</label>
+                                <input type="file" id="idCopy" required accept=".pdf,.jpg,.jpeg,.png" 
+                                    class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 
+                                    file:rounded-md file:border-0 file:text-sm file:font-semibold
+                                    file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">National Senior Certificate *</label>
+                                <input type="file" id="academicRecord" required accept=".pdf,.jpg,.jpeg,.png" 
+                                    class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 
+                                    file:rounded-md file:border-0 file:text-sm file:font-semibold
+                                    file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Proof of Residence *</label>
+                                <input type="file" id="proofOfResidence" required accept=".pdf,.jpg,.jpeg,.png" 
+                                    class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 
+                                    file:rounded-md file:border-0 file:text-sm file:font-semibold
+                                    file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between">
+                        <button type="button" onclick="window.location.href='registration.html'" 
+                            class="px-6 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">
+                            Back
+                        </button>
+                        <button type="button"onclick="window.location.href='application.html'" 
+                            class="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+                            Submit application
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+            
+            // Check if all required files are uploaded
+            const idCopy = document.getElementById('idCopy').files.length;
+            const academicRecord = document.getElementById('academicRecord').files.length;
+            const proofOfResidence = document.getElementById('proofOfResidence').files.length;
+            const proofOfPayment = document.getElementById('proofOfPayment').files.length;
+            
+            if (idCopy && academicRecord && proofOfResidence && proofOfPayment) {
+                // If all files are uploaded, proceed to payment page
+                window.location.href = 'payment.html';
+            } else {
+                alert('Please upload all required documents before proceeding.');
+            }
+            return false;
+        }
+        /*the drop down */
+function toggleContactDropdown(event) {
+    event.preventDefault();
+    const dropdown = document.getElementById('contactDropdown');
+    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(event) {
+    const dropdown = document.getElementById('contactDropdown');
+    const contactLink = document.querySelector('.dropdown > a');
+    
+    if (dropdown.style.display === 'block' && 
+        !dropdown.contains(event.target) && 
+        !contactLink.contains(event.target)) {
+        dropdown.style.display = 'none';
+    }
+});
+
+    </script>
+
+    <!-- Footer -->
+    <footer class="v-shape-footer bg-gray-800 text-gray-200">
+        <div class="footer-container py-8">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="footer-col">
+                    <h4 class="text-lg font-bold mb-4">About Us</h4>
+                    <p class="text-sm">We are dedicated to providing exceptional education and fostering academic excellence through innovative learning approaches and dedicated faculty.</p>
+                    <div class="social-links flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html" class="hover:text-white">HOME</a></li>
+                        <li><a href="#about" class="hover:text-white">ABOUT US</a></li>
+                        <li><a href="#services" class="hover:text-white">OUR SERVICES</a></li>
+                        <li><a href="index.html" class="hover:text-white">CONTACT US</a></li>
+                        <li><a href="index.html" class="hover:text-white">LOGIN</a></li>
+                        <li><a href="index.html" class="hover:text-white">PAY HERE</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="text-lg font-bold mb-4">Programs</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="Registration.html" class="hover:text-white">LANGUAGE</a></li>
+                        <li><a href="Registration.html" class="hover:text-white">SCIENCES</a></li>
+                        <li><a href="Registration.html" class="hover:text-white">HUMANITIES</a></li>
+                        <li><a href="Registration.html" class="hover:text-white">EXTRA CLASSES</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="text-lg font-bold mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="mailto:Educationmadeeasy.eh@gmail.com" class="hover:text-white">Educationmadeeasy.eh@gmail.com</a></li>
+                        <li><a href="tel:+27684167336" class="hover:text-white">+27 68 416 7336</a></li>
+                        <li><a href="#" class="hover:text-white">21 FIELD / JOE SLOVO ST</a></li>
+                        <li><a href="#" class="hover:text-white">ZUMAYSHA HOUSE 10TH FLOOR</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom bg-gray-900 py-4 text-center">
+            <p>&copy; 2019 EME. All rights reserved. | Website by Benedict</p>
+        </div>
+    </footer>
+</body>
+</html>

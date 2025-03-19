@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../MY PORTFOLIO"
+		},
+		{
+			"path": "../ZANOKUHLE POE"
+		},
+		{
+			"path": "../FALO WEAR"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "EME"
+	}
+}

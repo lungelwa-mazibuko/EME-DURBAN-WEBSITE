@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Success - EME Durban</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        .success-check {
+            animation: scale-up 0.5s ease-in-out;
+        }
+        @keyframes scale-up {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="max-w-4xl mx-auto px-4 py-16">
+        <!-- Success Card -->
+        <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+            <!-- Success Icon -->
+            <div class="success-check mx-auto w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                <svg class="w-16 h-16 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </div>
+
+            <!-- Header -->
+            <h1 class="text-3xl font-bold text-gray-800 mb-4">Registration Successful!</h1>
+            <p class="text-gray-600 text-lg mb-8">Welcome to EME Durban! Your registration has been completed successfully.</p>
+
+            <!-- Registration Details -->
+            <div class="bg-gray-50 rounded-lg p-6 mb-8 text-left">
+                <h2 class="text-xl font-semibold text-gray-700 mb-4">Registration Details</h2>
+                <div class="space-y-3">
+                    <p class="text-gray-600"><span class="font-medium">Student ID:</span> <span id="studentId">EME2024001</span></p>
+                    <p class="text-gray-600"><span class="font-medium">Registration Date:</span> <span id="regDate"></span></p>
+                    <p class="text-gray-600"><span class="font-medium">Next Step:</span> Complete your registration by paying the registration fee</p>
+                </div>
+            </div>
+
+            <!-- Important Notice -->
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-8 text-left">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <svg class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm text-blue-700">
+                            Please complete your registration fee payment within 48 hours to secure your place.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Button -->
+            <a href="Payments.html" class="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
+                Pay Registration Fee
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-8 text-center text-gray-500">
+            <p>Need help? Contact our support team at support@emedurban.com</p>
+        </div>
+    </div>
+
+    <script>
+        // Set current date
+        document.getElementById('regDate').textContent = new Date().toLocaleDateString('en-ZA', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    </script>
+</body>
+</html>

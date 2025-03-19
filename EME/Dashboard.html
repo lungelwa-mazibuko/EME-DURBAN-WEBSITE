@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EME Admin Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+    
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex">
+        <!-- Sidebar -->
+        <div class="sidebar w-64 text-white p-4 hidden lg:block">
+            <div class="flex items-center justify-center mb-8 pt-4">
+                <h1 class="text-2xl font-bold">EME Admin</h1>
+            </div>
+            <nav>
+                <ul class="space-y-2">
+                    <li class="p-2 rounded bg-blue-700">
+                        <a href="#" class="flex items-center">
+                            <i class="fas fa-users mr-3"></i>
+                            <span>Applications</span>
+                        </a>
+                    </li>
+                    <li class="p-2 rounded hover:bg-blue-700 transition-colors">
+                        <a href="#" class="flex items-center">
+                            <i class="fas fa-money-bill-wave mr-3"></i>
+                            <span>Payments</span>
+                        </a>
+                    </li>
+                    <li class="p-2 rounded hover:bg-blue-700 transition-colors">
+                        <a href="#" class="flex items-center">
+                            <i class="fas fa-graduation-cap mr-3"></i>
+                            <span>Students</span>
+                        </a>
+                    </li>
+                    <li class="p-2 rounded hover:bg-blue-700 transition-colors">
+                        <a href="#" class="flex items-center">
+                            <i class="fas fa-book mr-3"></i>
+                            <span>Courses</span>
+                        </a>
+                    </li>
+                    <li class="p-2 rounded hover:bg-blue-700 transition-colors">
+                        <a href="#" class="flex items-center">
+                            <i class="fas fa-cog mr-3"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li class="p-2 rounded hover:bg-blue-700 transition-colors">
+                        <a href="#" class="flex items-center">
+                            <i class="fas fa-sign-out-alt mr-3"></i>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1">
+            <!-- Header -->
+            <header class="header flex justify-between items-center p-4 text-white">
+                <button class="lg:hidden">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <h1 class="text-xl font-bold lg:hidden">EME Admin</h1>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <i class="fas fa-bell text-xl cursor-pointer"></i>
+                        <span class="absolute -top-1 -right-1 bg-red-500 text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="hidden md:inline">Admin User</span>
+                        <img src="/api/placeholder/32/32" alt="Profile" class="w-8 h-8 rounded-full">
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content Area -->
+            <main class="main-content p-4">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Application Management</h2>
+                    <p class="text-gray-600">Review and process student applications</p>
+                </div>
+
+                <!-- Filter and Search -->
+                <div class="bg-white p-4 rounded-lg shadow mb-6">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Filter Status</label>
+                            <select id="statusFilter" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="all">All Applications</option>
+                                <option value="pending">Pending</option>
+                                <option value="accepted">Accepted</option>
+                                <option value="declined">Declined</option>
+                                <option value="paid">Paid</option>
+                                <option value="unpaid">Unpaid</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Sort By</label>
+                            <select id="sortBy" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="date_desc">Date (Newest First)</option>
+                                <option value="date_asc">Date (Oldest First)</option>
+                                <option value="name_asc">Name (A-Z)</option>
+                                <option value="name_desc">Name (Z-A)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Search</label>
+                            <div class="relative">
+                                <input type="text" placeholder="Search applicants..." class="w-full border border-gray-300 rounded-md pl-10 pr-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                    <div class="bg-white rounded-lg shadow p-4">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-gray-500">Total Applications</p>
+                                <h3 class="text-2xl font-bold">124</h3>
+                            </div>
+                            <div class="bg-blue-100 p-3 rounded-full">
+                                <i class="fas fa-file-alt text-blue-600"></i>
+                            </div>
+                        </div>
+                        <p class="text-sm text-green-600 mt-2"><i class="fas fa-arrow-up"></i> 12% from last month</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-4">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-gray-500">Pending Review</p>
+                                <h3 class="text-2xl font-bold">28</h3>
+                            </div>
+                            <div class="bg-yellow-100 p-3 rounded-full">
+                                <i class="fas fa-clock text-yellow-600"></i>
+                            </div>
+                        </div>
+                        <p class="text-sm text-red-600 mt-2"><i class="fas fa-arrow-up"></i> 5% from last week</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-4">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-gray-500">Approved</p>
+                                <h3 class="text-2xl font-bold">86</h3>
+                            </div>
+                            <div class="bg-green-100 p-3 rounded-full">
+                                <i class="fas fa-check-circle text-green-600"></i>
+                            </div>
+                        </div>
+                        <p class="text-sm text-green-600 mt-2"><i class="fas fa-arrow-up"></i> 18% from last month</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-4">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-gray-500">Payment Received</p>
+                                <h3 class="text-2xl font-bold">72</h3>
+                            </div>
+                            <div class="bg-purple-100 p-3 rounded-full">
+                                <i class="fas fa-money-bill-wave text-purple-600"></i>
+                            </div>
+                        </div>
+                        <p class="text-sm text-green-600 mt-2"><i class="fas fa-arrow-up"></i> 7% from last month</p>
+                    </div>
+                </div>
+
+                <!-- Applicants Table -->
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <div class="p-4 border-b border-gray-200">
+                        <h3 class="text-lg font-semibold text-gray-800">Recent Applications</h3>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Applicant</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Contact</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Subjects</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Application Status</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Payment Status</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date Applied</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <!-- Applicant 1 -->
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10">
+                                                <img class="h-10 w-10 rounded-full" src="/api/placeholder/40/40" alt="Applicant">
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">Sarah Johnson</div>
+                                                <div class="text-sm text-gray-500">ID: 9804256789123</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">sarahjohnson@example.com</div>
+                                        <div class="text-sm text-gray-500">073 123 4567</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-900">Mathematics, Life Sciences, Geography</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Pending</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Unpaid</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        Feb 23, 2025
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <button onclick="openApplicantModal('Sarah Johnson')" class="text-blue-600 hover:text-blue-900 mr-3"><i class="fas fa-eye"></i></button>
+                                        <button onclick="openAcceptModal('Sarah Johnson')" class="text-green-600 hover:text-green-900 mr-3"><i class="fas fa-check"></i></button>
+                                        <button onclick="openDeclineModal('Sarah Johnson')" class="text-red-600 hover:text-red-900"><i class="fas fa-times"></i></button>
+                                    </td>
+                                </tr>
+                                <!-- Applicant 2 -->
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10">
+                                                <img class="h-10 w-10 rounded-full" src="/api/placeholder/40/40" alt="Applicant">
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">Thabo Molefe</div>
+                                                <div class="text-sm text-gray-500">ID: 9801015783082</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">thabomolefe@example.com</div>
+                                        <div class="text-sm text-gray-500">082 456 7890</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-900">Physical Sciences, Mathematics, Accounting</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Accepted</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Paid</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        Feb 20, 2025
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <button onclick="openApplicantModal('Thabo Molefe')" class="text-blue-600 hover:text-blue-900 mr-3"><i class="fas fa-eye"></i></button>
+                                        <button class="text-gray-400 cursor-not-allowed mr-3"><i class="fas fa-check"></i></button>
+                                        <button class="text-gray-400 cursor-not-allowed"><i class="fas fa-times"></i></button>
+                                    </td>
+                                </tr>
+                                <!-- Applicant 3 -->
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10">
+                                                <img class="h-10 w-10 rounded-full" src="/api/placeholder/40/40" alt="Applicant">
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">Lerato Ndlovu</div>
+                                                <div class="text-sm text-gray-500">ID: 0006125783082</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">lerato.ndlovu@example.com</div>
+                                        <div class="text-sm text-gray-500">071 897 6543</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-900">History, English, Life Orientation</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Pending</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Unpaid</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        Feb 24, 2025
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <button onclick="openApplicantModal('Lerato Ndlovu')" class="text-blue-600 hover:text-blue-900 mr-3"><i class="fas fa-eye"></i></button>
+                                        <button onclick="openAcceptModal('Lerato Ndlovu')" class="text-green-600 hover:text-green-900 mr-3"><i class="fas fa-check"></i></button>
+                                        <button onclick="openDeclineModal('Lerato Ndlovu')" class="text-red-600 hover:text-red-900"><i class="fas fa-times"></i></button>
+                                    </td>
+                                </tr>
+                                <!-- Applicant 4 -->
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10">
+                                                <img class="h-10 w-10 rounded-full" src="/api/placeholder/40/40" alt="Applicant">
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">Michael Khumalo</div>
+                                                <div class="text-sm text-gray-500">ID: 9912125481082</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">michael.k@example.com</div>
+                                        <div class="text-sm text-gray-500">083 222 3456</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-900">Tourism, Business Studies, Economics</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Declined</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Unpaid</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        Feb 15, 2025
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <button onclick="openApplicantModal('Michael Khumalo')" class="text-blue-600 hover:text-blue-900 mr-3"><i class="fas fa-eye"></i></button>
+                                        <button class="text-gray-400 cursor-not-allowed mr-3"><i class="fas fa-check"></i></button>
+                                        <button class="text-gray-400 cursor-not-allowed"><i class="fas fa-times"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Pagination -->
+                    <div class="px-4 py-3 bg-gray-50 border-t border-gray-200 sm:px-6">
+                        <div class="flex items-center justify-between">
+                            <div class="text-sm text-gray-700">
+                                Showing <span class="font-medium">1</span> to <span class="font-medium">4</span> of <span class="font-medium">124</span> applicants
+                            </div>
+                            <div class="flex space-x-2">
+                                <button type="button" class="py-2 px-4 border rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                                    Previous
+                                </button>
+                                <button type="button" class="py-2 px-4 border rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                                    Next
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Applicant Details Modal -->
+    <div id="applicantModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50 modal">
+        <div class="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-screen overflow-y-auto">
+            <div class="p-4 border-b border-gray-200 flex justify-between sticky top-0 bg-white">
+                <h3 class="text-lg font-semibold text-gray-800">Applicant Details</h3>
+                <button onclick="closeModal('applicantModal')" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Profile Info -->
+                    <div class="md:col-span-1">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="flex flex-col items-center mb-4">
+                                <img src="/api/placeholder/100/100" alt="Applicant" class="h-24 w-24 rounded-full mb-3">
+                                <h4 id="applicantName" class="text-xl font-semibold">Sarah Johnson</h4>
+                                <p class="text-sm text-gray-500">Applied on Feb 23, 2025</p>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="flex items-center">
+                                    <i class="fas fa-id-card text-gray-500 w-6"></i>
+                                    <span class="text-sm ml-2">9804256789123</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-envelope text-gray-500 w-6"></i>
+                                    <span class="text-sm ml-2">sarahjohnson@example.com</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-phone text-gray-500 w-6"></i>
+                                    <span class="text-sm ml-2">073 123 4567</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-map-marker-alt text-gray-500 w-6"></i>
+                                    <span class="text-sm ml-2">123 Main St, Johannesburg</span>
+                                </div>
+                                <div class="flex items-center mt-4">
+                                    <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Application Pending</span>
+                                </div>
+                                <div class="flex items-center mt-2">
+                                    <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Payment Pending</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Application Details -->
+                    <div class="md:col-span-2">
+                        <div class="grid grid-cols-1 gap-6">
+                            <!-- Personal Information -->
+                            <div class="bg-white p-4 rounded-lg border border-gray-200">
+                                <h5 class="font-semibold mb-3 text-gray-800">Personal Information</h5>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <p class="text-sm text-gray-500">Full Name</p>
+                                        <p class="font-medium">Sarah Johnson</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-gray-500">Date of Birth</p>
+                                        <p class="font-medium">1998-04-25</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-gray-500">Gender</p>
+                                        <p class="font-medium">Female</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-gray-500">Race</p>
+                                        <p class="font-medium">Black</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Next of Kin -->
+                            <div class="bg-white p-4 rounded-lg border border-gray-200">
+                                <h5 class="font-semibold mb-3 text-gray-800">Next of Kin</h5>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <p class="text-sm text-gray-500">Full Name</p>
+                                        <p class="font-medium">Mary Johnson</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-gray-500">Relationship</p>
+                                        <p class="font-medium">Mother</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-gray-500">Contact Number</p>
+                                        <p class="font-medium">082 567 8901</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Subject Selection -->
+                            <div class="bg-white p-4 rounded-lg border border-gray-200">
+                                <h5 class="font-semibold mb-3 text-gray-800">Subject Selection</h5>
+                                <div class="p-2 bg-gray-50 rounded">
+                                    <span class="font-medium">Mathematics</span>
+                                    <span class="text-sm text-gray-500 ml-2">Previous Grade: 75%</span>
+                                </div>
+                                <div class="p-2 bg-gray-50 rounded">
+                                    <span class="font-medium">Life Sciences</span>
+                                    <span class="text-sm text-gray-500 ml-2">Previous Grade: 82%</span>
+                                </div>
+                                <div class="p-2 bg-gray-50 rounded">
+                                    <span class="font-medium">Geography</span>
+                                    <span class="text-sm text-gray-500 ml-2">Previous Grade: 78%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Documents Section -->
+                        <div class="bg-white p-4 rounded-lg border border-gray-200">
+                            <h5 class="font-semibold mb-3 text-gray-800">Submitted Documents</h5>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center p-2 bg-gray-50 rounded">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-file-pdf text-red-500 mr-2"></i>
+                                        <span>ID Document</span>
+                                    </div>
+                                    <button class="text-blue-600 hover:text-blue-800">
+                                        <i class="fas fa-download"></i> Download
+                                    </button>
+                                </div>
+                                <div class="flex justify-between items-center p-2 bg-gray-50 rounded">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-file-pdf text-red-500 mr-2"></i>
+                                        <span>Academic Transcript</span>
+                                    </div>
+                                    <button class="text-blue-600 hover:text-blue-800">
+                                        <i class="fas fa-download"></i> Download
+                                    </button>
+                                </div>
+                                <div class="flex justify-between items-center p-2 bg-gray-50 rounded">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-file-pdf text-red-500 mr-2"></i>
+                                        <span>Proof of Address</span>
+                                    </div>
+                                    <button class="text-blue-600 hover:text-blue-800">
+                                        <i class="fas fa-download"></i> Download
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Application Actions -->
+                        <div class="bg-white p-4 rounded-lg border border-gray-200">
+                            <h5 class="font-semibold mb-3 text-gray-800">Application Actions</h5>
+                            <div class="flex flex-col space-y-4">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <button onclick="openAcceptModal(document.getElementById('applicantName').textContent)" class="action-btn flex items-center justify-center px-4 py-2 bg-green-600 text-white font-medium rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
+                                        <i class="fas fa-check mr-2"></i> Accept Application
+                                    </button>
+                                    <button onclick="openDeclineModal(document.getElementById('applicantName').textContent)" class="action-btn flex items-center justify-center px-4 py-2 bg-red-600 text-white font-medium rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">
+                                        <i class="fas fa-times mr-2"></i> Decline Application
+                                    </button>
+                                </div>
+                                <div class="border-t border-gray-200 pt-4">
+                                    <label for="applicationNotes" class="block text-sm font-medium text-gray-700 mb-1">Admin Notes</label>
+                                    <textarea id="applicationNotes" rows="3" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Add private notes about this application..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Accept Application Modal -->
+<div id="acceptModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50 modal">
+    <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full">
+        <div class="p-4 border-b border-gray-200 flex justify-between">
+            <h3 class="text-lg font-semibold text-gray-800">Accept Application</h3>
+            <button onclick="closeModal('acceptModal')" class="text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="p-6">
+            <div class="mb-6">
+                <p>You are about to accept <span id="acceptApplicantName" class="font-semibold">Sarah Johnson</span>'s application. This will:</p>
+                <ul class="list-disc list-inside mt-2 space-y-1 text-gray-600">
+                    <li>Update the application status to "Accepted"</li>
+                    <li>Send an acceptance email to the applicant</li>
+                    <li>Generate a fee invoice</li>
+                </ul>
+            </div>
+            
+            <div class="mb-6">
+                <h4 class="font-medium mb-2">Acceptance Email Preview:</h4>
+                <div class="email-preview">
+                    <p><strong>Subject:</strong> Your EME Application Has Been Accepted</p>
+                    <hr class="my-2">
+                    <p>Dear <span id="emailApplicantName">Sarah Johnson</span>,</p>
+                    <p>Congratulations! We are pleased to inform you that your application to EME has been accepted.</p>
+                    <p>Please find attached your formal acceptance letter and invoice for the registration fee. To secure your place, please make payment within 7 days.</p>
+                    <p>For any queries, please contact our admissions office.</p>
+                    <p>Best regards,<br>EME Admissions Team</p>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <label for="acceptanceMessage" class="block text-sm font-medium text-gray-700 mb-1">Additional Message (Optional)</label>
+                <textarea id="acceptanceMessage" rows="3" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Add a personalized message to the acceptance email..."></textarea>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <button onclick="acceptApplication()" class="action-btn flex items-center justify-center px-4 py-2 bg-green-600 text-white font-medium rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <i class="fas fa-check mr-2"></i> Confirm Acceptance
+                </button>
+                <button onclick="closeModal('acceptModal')" class="action-btn flex items-center justify-center px-4 py-2 bg-gray-200 text-gray-700 font-medium rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400">
+                    <i class="fas fa-times mr-2"></i> Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Decline Application Modal -->
+<div id="declineModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50 modal">
+    <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full">
+        <div class="p-4 border-b border-gray-200 flex justify-between">
+            <h3 class="text-lg font-semibold text-gray-800">Decline Application</h3>
+            <button onclick="closeModal('declineModal')" class="text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="p-6">
+            <div class="mb-6">
+                <p>You are about to decline <span id="declineApplicantName" class="font-semibold">Sarah Johnson</span>'s application. This will:</p>
+                <ul class="list-disc list-inside mt-2 space-y-1 text-gray-600">
+                    <li>Update the application status to "Declined"</li>
+                    <li>Send a declination email to the applicant</li>
+                </ul>
+            </div>
+            
+            <div class="mb-6">
+                <h4 class="font-medium mb-2">Decline Email Preview:</h4>
+                <div class="email-preview">
+                    <p><strong>Subject:</strong> Update on Your EME Application</p>
+                    <hr class="my-2">
+                    <p>Dear <span id="declineEmailApplicantName">Sarah Johnson</span>,</p>
+                    <p>Thank you for your interest in EME and for taking the time to apply to our institution.</p>
+                    <p>After careful consideration of your application, we regret to inform you that we are unable to offer you a place at this time.</p>
+                    <p>If you would like feedback on your application or have any questions, please don't hesitate to contact our admissions office.</p>
+                    <p>We wish you all the best in your future endeavors.</p>
+                    <p>Regards,<br>EME Admissions Team</p>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <label for="declineReason" class="block text-sm font-medium text-gray-700 mb-1">Reason for Declining (Required)</label>
+                <select id="declineReason" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">Select a reason...</option>
+                    <option value="grades">Insufficient Grades</option>
+                    <option value="documents">Incomplete Documents</option>
+                    <option value="subjects">Subject Selection Not Available</option>
+                    <option value="capacity">Course at Capacity</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            
+            <div class="mb-6">
+                <label for="declineMessage" class="block text-sm font-medium text-gray-700 mb-1">Additional Feedback (Optional)</label>
+                <textarea id="declineMessage" rows="3" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Provide additional feedback to the applicant..."></textarea>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <button onclick="declineApplication()" class="action-btn flex items-center justify-center px-4 py-2 bg-red-600 text-white font-medium rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">
+                    <i class="fas fa-times mr-2"></i> Confirm Decline
+                </button>
+                <button onclick="closeModal('declineModal')" class="action-btn flex items-center justify-center px-4 py-2 bg-gray-200 text-gray-700 font-medium rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400">
+                    <i class="fas fa-undo mr-2"></i> Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Success Notification -->
+<div id="successNotification" class="fixed bottom-4 right-4 bg-green-500 text-white p-4 rounded-lg shadow-lg hidden transform transition-transform duration-300 z-50">
+    <div class="flex items-center">
+        <i class="fas fa-check-circle mr-3 text-2xl"></i>
+        <div>
+            <h4 class="font-bold">Success!</h4>
+            <p id="successMessage">Application processed successfully.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Functions to open and close modals
+    function openApplicantModal(name) {
+        document.getElementById('applicantName').textContent = name;
+        document.getElementById('applicantModal').classList.remove('hidden');
+    }
+
+    function openAcceptModal(name) {
+        document.getElementById('acceptApplicantName').textContent = name;
+        document.getElementById('emailApplicantName').textContent = name;
+        document.getElementById('acceptModal').classList.remove('hidden');
+    }
+
+    function openDeclineModal(name) {
+        document.getElementById('declineApplicantName').textContent = name;
+        document.getElementById('declineEmailApplicantName').textContent = name;
+        document.getElementById('declineModal').classList.remove('hidden');
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).classList.add('hidden');
+    }
+
+    // Function to accept application and send email
+    function acceptApplication() {
+        // Here you would normally make an API call to update the database
+        // and trigger an email send
+        
+        // For demo purposes, we'll just show a success notification
+        document.getElementById('successMessage').textContent = 
+            `Application for ${document.getElementById('acceptApplicantName').textContent} has been accepted and acceptance email sent.`;
+        
+        // Show success notification
+        const notification = document.getElementById('successNotification');
+        notification.classList.remove('hidden');
+        
+        // Hide notification after 5 seconds
+        setTimeout(() => {
+            notification.classList.add('hidden');
+        }, 5000);
+        
+        // Close the modal
+        closeModal('acceptModal');
+        
+        // Update table status (in a real app this would be done after API confirmation)
+        updateApplicationStatus(document.getElementById('acceptApplicantName').textContent, 'Accepted');
+    }
+
+    // Function to decline application and send email
+    function declineApplication() {
+        // Validate that a reason was selected
+        const reason = document.getElementById('declineReason').value;
+        if (!reason) {
+            alert("Please select a reason for declining the application");
+            return;
+        }
+        
+        // Here you would normally make an API call to update the database
+        // and trigger an email send
+        
+        // For demo purposes, we'll just show a success notification
+        document.getElementById('successMessage').textContent = 
+            `Application for ${document.getElementById('declineApplicantName').textContent} has been declined and notification email sent.`;
+        
+        // Show success notification
+        const notification = document.getElementById('successNotification');
+        notification.classList.remove('hidden');
+        
+        // Hide notification after 5 seconds
+        setTimeout(() => {
+            notification.classList.add('hidden');
+        }, 5000);
+        
+        // Close the modal
+        closeModal('declineModal');
+        
+        // Update table status (in a real app this would be done after API confirmation)
+        updateApplicationStatus(document.getElementById('declineApplicantName').textContent, 'Declined');
+    }
+
+    // Function to update application status in the table
+    function updateApplicationStatus(name, status) {
+        // This is a simplified demo function
+        // In a real application, you would update the DOM based on database changes
+        
+        // For the purpose of this demo, we'll just add a class to simulate the update
+        const rows = document.querySelectorAll('table tbody tr');
+        rows.forEach(row => {
+            const nameCell = row.querySelector('td:first-child .text-sm.font-medium');
+            if (nameCell && nameCell.textContent === name) {
+                const statusCell = row.querySelector('td:nth-child(4) span');
+                if (statusCell) {
+                    // Remove existing classes
+                    statusCell.classList.remove('bg-yellow-100', 'text-yellow-800', 'bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800');
+                    
+                    // Add new classes based on status
+                    if (status === 'Accepted') {
+                        statusCell.classList.add('bg-green-100', 'text-green-800');
+                        statusCell.textContent = 'Accepted';
+                    } else if (status === 'Declined') {
+                        statusCell.classList.add('bg-red-100', 'text-red-800');
+                        statusCell.textContent = 'Declined';
+                    }
+                    
+                    // Disable action buttons
+                    const actionButtons = row.querySelectorAll('td:last-child button');
+                    actionButtons[1].classList.add('text-gray-400', 'cursor-not-allowed');
+                    actionButtons[1].classList.remove('text-green-600', 'hover:text-green-900');
+                    actionButtons[2].classList.add('text-gray-400', 'cursor-not-allowed');
+                    actionButtons[2].classList.remove('text-red-600', 'hover:text-red-900');
+                    
+                    // Remove onclick handlers
+                    actionButtons[1].removeAttribute('onclick');
+                    actionButtons[2].removeAttribute('onclick');
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

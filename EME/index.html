@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#1a1a1a">
+    <title>EME DURBAN</title> 
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Home Page -->
+    <div class="hero1">
+        <nav>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <img src="images/LOGO.jpg" height="100" class="logo">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="#about">ABOUT US</a></li>
+                <li><a href="#services">OUR SERVICES</a></li>
+                <li class="dropdown">
+                    <a href="#" onclick="toggleContactDropdown(event)">CONTACT US</a>
+                    <div id="contactDropdown" class="dropdown-content">
+                        <!-- Contact Information Card -->
+                        <div class="contact-card">
+                            <h3>Contact Information</h3>
+                            <div class="contact-details">
+                                <p><i class="fas fa-envelope"></i> Email: Educationmadeeasy.eh@gmail.com</p>
+                                <p><i class="fas fa-phone"></i> Phone: +27 68 416 7336</p>
+                                <p><i class="fas fa-map-marker-alt"></i> Address: 21 FIELD /JOE SLOVO ST, ZUMAYSHA HOUSE 10TH FLOOR</p>
+                            </div>
+                            <div class="contact-links">
+                                <a href="mailto:Educationmadeeasy.eh@gmail.com" class="contact-btn">Send Email</a>
+                                <a href="tel:+27684167336" class="contact-btn">Call Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="index.html" onclick="showUnavailable(event)">LOGIN</a></li>
+                <div id="unavailableMessage" class="alert">
+                    This service is currently unavailable
+                </div>
+                <li><a href="index.html" onclick="showUnavailable(event)" >PAYMENTS & FEES</a></li>
+                <div id="unavailableMessage" class="alert">
+                    This service is currently unavailable
+            </ul>
+        </nav>
+        <div class="content">
+            <h1>WELCOME TO EME DURBAN</h1>
+            <h4>EDUCATIONAL HUB<h4>
+            <a href="Registration.html">REGISTER</a>
+        </div> 
+    </div>
+<!--the other icons-->
+<div class="floating-icons">
+    <!-- WhatsApp Icon -->
+    <a href="https://wa.me/+27684167336" class="icon-button whatsapp" target="_blank">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.25.625 4.356 1.712 6.15L.034 23.47l5.45-1.437A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.038 0-3.938-.59-5.548-1.61l-3.89 1.025 1.047-3.856A9.93 9.93 0 012 12c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10z"/>
+        </svg>
+    </a>
+
+    <!-- Phone Icon -->
+    <a href="tel:+27684167336" class="icon-button phone">
+        <svg viewBox="0 0 24 24">
+            <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+        </svg>
+    </a>
+
+    <!-- Message Icon -->
+    <a href="mailto:Educationmadeeasy.eh@gmail.com" class="icon-button message">
+        <svg viewBox="0 0 24 24">
+            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+    </a>
+</div>
+    <!-- About Page -->
+    <div class="hero2" id="about">
+    <section class="about-section">
+        <h1 class="main-title" style="color: rgb(13, 13, 18);">EME DURBAN</h1>
+        <article>
+            <h3 style="color: rgb(11, 23, 23);">About Us</h3>
+            <p style="color: rgb(10, 9, 9);">
+                EME  is more than just a finishing school — it's a gateway to brighter futures. We specialize in helping students not only <br>
+                meet but exceed their academic goals, with a strong focus on improving matric scores, which are key to unlocking future opportunities.<br>
+
+                At EME, we guide our students toward gaining entry into the universities of their choice, setting them on the path to the careers<br>
+                 they’ve always dreamed of. With the support of our passionate and experienced teachers, each student receives personalized attention, empowering<br>
+                  them with the confidence and skills they need to excel academically.<br>
+
+But we don’t stop there. We go beyond academics, assisting students with university and bursary applications, making what can be a stressful process smooth and efficient,<br>
+ thanks to the guidance of our dedicated lecturers. For those coming from afar, we provide secure, comfortable housing to ensure they can focus entirely on their studies in a<br>
+  safe and supportive environment.
+  <br>
+  <br>
+                <!-- (Content truncated for brevity) -->
+            </p>
+        </article>
+        <a href="#campus" class="cta-btn">VIEW Location</a>
+    </section>
+</div>
+<!--the courses -->
+<section id="Programs" class="programs">
+    <h2 class="section-title">PROGRAMS</h2>
+    <div class="programs-grid">
+        <!-- Program 1 -->
+        <div class="program-card">
+            <img src="images/language (1).jpg" alt="Program 1">
+            <div class="program-content">
+                <h3>LANGUAGE</h3>
+                <ul>
+                    <li><a href="Registration.html">ENGLISH HOME LANGUAGE</a></li>
+                    <li><a href="Registration.html">ENGLISH FIRST ADDITIONAL LANGUAGE</a></li>
+                    <li><a href="Registration.html">ISIZULU HOME LANGUAGE</a></li>
+                    <li><a href="Registration.html">ISIZULU FIRST ADDITIONAL LANGUAGE</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- program 2 -->
+        <div class="program-card">
+            <img src="images/science.jpg" alt="program 2">
+            <div class="program-content">
+                <h3>SCIENCE</h3>
+                <ul>
+                    <li><a href="Registration.html">MATHEMATICS</a></li>
+                    <li><a href="Registration.html">MATHEMATICAL LITERACY</a></li>
+                    <li><a href="Registration.html">PHYSICAL SCIENCE</a></li>
+                    <li><a href="Registration.html">LIFE SCIENCE</a></li>
+                    <li><a href="Registration.html">AGRICULTURAL SCIENCE </a></li>
+
+                </ul>
+            </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card">
+            <img src="images/economy.jpg" alt="Project 3">
+            <div class="project-content">
+                <h3>COMMERCE</h3>
+                <ul>
+                    <li><a href="Registration.html">ACCOUNTING</a></li>
+                    <li><a href="Registration.html">ECONOMICS</a></li>
+                    <li><a href="Registration.html">BUSINESS STUDIES</a></li>
+
+                </ul>
+            </div>
+        </div>
+        <!-- program 4 -->
+        <div class="program-card">
+            <img src="images/humanities.jpg" alt="program 4">
+            <div class="program-content">
+                <h3>HUMANITIES</h3>
+                <ul>
+                    <li><a href="Registration.html">HISTORY</a></li>
+                    <li><a href="Registration.html">GEOGRAPHY</a></li>
+                    <li><a href="Registration.html">TOURISM</a></li>
+                    <li><a href="Registration.html">LIFE ORIENTATION </a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- Services Page -->
+    <main>
+        
+        <div class="hero3-content"id="services">
+        <div class="content-container">
+            <div class="left-content">
+                <h5>Empowering Academic Excellence</h5>
+                <p> EME Academy is dedicated to empowering students who seek to improve their academic results, providing them with the opportunity to unlock their full potential. Whether it's to meet university entry requirements or pursue a specific career path, we offer a tailored approach to help students enhance their grades. With our support, students can confidently apply for the course of their choice at any university, ensuring that they have the academic foundation needed to pursue their dreams.</p>
+                <img src="images/LOGO.jpg" height="600" alt="EME Academy Image" class="content-image">
+            </div>
+            <div class="right-content">
+                <h5>Shaping Bright Futures</h5>
+                <p>At EME Academy, we believe in shaping bright futures. Our commitment to students goes beyond the classroom — we strive to open doors to endless possibilities. By offering top-tier education paired with personalized support, we ensure each student is set on a path to success. What sets us apart is our dedication to making quality education accessible and affordable for everyone. We understand the importance of empowering young minds, which is why we offer a learning experience that not only meets high standards but also fits into your budget, making academic excellence within reach for all.</p>
+            </div>
+        </div class="pricelist-image">
+        <h3 class="price-list-title">OUR PRICELIST:</h3>
+        <img src="images/PRICING.jpg" height="800" alt="EME Academy Pricelist" class="pricelist-image">
+    </div>
+</div>
+    </main>
+<br>
+    <!-- Location Section -->
+    <div class="hero4">
+        <section class="campus-section" id="campus">
+            <h3>Location</h3>
+            <div class="campus-container">
+                <div class="campus">
+                    <i class="fas fa-map-marker-alt location-icon"></i>
+                    <h2>Durban</h2>
+                    <p>21 FIELD /JOE SLOVO ST 
+                        ZUMAYSHA HOUSE
+                        10TH FLOOR
+                    </p>
+                    <div class="location-card">
+                        <h2 class="location-title">Durban Central</h2>
+                        
+                        <div class="map-container">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3459.7758124457347!2d31.025678!3d-29.857827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef7a9c8751c3375%3A0x0!2s21+field+St%2C+Durban+Central!5e0!3m2!1sen!2sza!4v1579001234567!5m2!1sen!2sza"
+                                title="Map showing Durban Central location"
+                                width="100%"
+                                height="450"
+                                style="border:0;"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                        
+                        <a href="https://www.google.com/maps/dir//21+field+St,+Durban+Central" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="directions-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="directions-icon">
+                                <polygon points="3 11 22 2 13 21 11 13 3 11"/>
+                            </svg>
+                            Get Directions
+                        </a>
+                    </div>
+            </div>
+    </section>
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
+</div>
+<footer class="v-shape-footer">
+    <div class="footer-overlay"></div>
+    <div class="footer-container">
+        <div class="footer-col">
+            <h4>About Us</h4>
+            <p>We are dedicated to providing exceptional education and fostering academic excellence through innovative learning approaches and dedicated faculty.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="#about">ABOUT US</a></li>
+                <li><a href="#services">OUR SERVICES</a></li>
+                <li><a href="index.html">CONTACT US</a></li>
+                <li><a href="index.html">LOGIN</a></li>
+                <li><a href="index.html">PAY HERE</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-col">
+            <h4>Programs</h4>
+            <ul>
+                <li><a href="Registration.html">LANGUAGE</a></li>
+                <li><a href="Registration.html">SCIENCES</a></li>
+                <li><a href="Registration.html">HUMANITIES</a></li>
+                <li><a href="Registration.html">EXTRA CLASSES</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-col">
+            <h4>Contact Info</h4>
+            <ul>
+                <li><a href="Educationmadeeasy.eh@gmail.com">Educationmadeeasy.eh@gmail.com</a></li>
+                <li><a href="call:+27684167336">+27 68 416 7336</a></li>
+                <li><a href="#">21 FIELD /JOE SLOVO ST</a></li>
+                <li><a href="#"> ZUMAYSHA HOUSE 10TH FLOOR</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; 2019 EME. All rights reserved.|website by Benedict</p>
+    </div>
+</footer>
+
+<!-- Add Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
