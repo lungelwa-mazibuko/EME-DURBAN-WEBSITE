@@ -765,9 +765,9 @@ nav ul li a:hover {
         // Validate checkbox group (subjects - at least 7 must be selected)
         const subjectCheckboxes = form.querySelectorAll('input[name="subjects"]');
         const selectedSubjects = Array.from(subjectCheckboxes).filter(checkbox => checkbox.checked);
-        if (selectedSubjects.length < 7) {
+        if (selectedSubjects.length < 1) {
             isValid = false;
-            errors.push('Please select a minimum of 7 subjects.');
+            errors.push('Please select a minimum of 1 subjects.');
         }
         
         // If there are errors, display them
